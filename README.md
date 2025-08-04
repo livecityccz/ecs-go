@@ -26,35 +26,6 @@
 
 ---
 
-## **功能**
-
-- 系统基础信息查询，IP基础信息并发查询：  
-  自研 [basics](https://github.com/oneclickvirt/basics)、[gostun](https://github.com/oneclickvirt/gostun)
-- CPU 测试：  
-  自研 [cputest](https://github.com/oneclickvirt/cputest)，支持 sysbench(lua/golang版本)、geekbench、winsat
-- 内存测试：  
-  自研 [memorytest](https://github.com/oneclickvirt/memorytest)，支持 sysbench、dd
-- 硬盘测试：  
-  自研 [disktest](https://github.com/oneclickvirt/disktest)，支持 dd、fio、winsat
-- 流媒体解锁信息并发查询：  
-  借鉴 [netflix-verify](https://github.com/sjlleo/netflix-verify) 等逻辑，开发至 [CommonMediaTests](https://github.com/oneclickvirt/CommonMediaTests)
-- 常见流媒体测试并发查询：  
-  自研至 [UnlockTests](https://github.com/oneclickvirt/UnlockTests)，逻辑借鉴 [RegionRestrictionCheck](https://github.com/lmc999/RegionRestrictionCheck) 等
-- IP 质量/安全信息并发查询：  
-  自研，二进制文件编译至 [securityCheck](https://github.com/oneclickvirt/securityCheck)
-- 邮件端口测试：  
-  自研 [portchecker](https://github.com/oneclickvirt/portchecker)
-- 三网回程测试：  
-  借鉴 [zhanghanyun/backtrace](https://github.com/zhanghanyun/backtrace)，二次开发至 [oneclickvirt/backtrace](https://github.com/oneclickvirt/backtrace)
-- 三网路由测试：  
-  基于 [NTrace-core](https://github.com/nxtrace/NTrace-core)，二次开发至 [nt3](https://github.com/oneclickvirt/nt3)
-- 网速测试：  
-  基于 [speedtest.net](https://github.com/spiritLHLS/speedtest.net-CN-ID) 和 [speedtest.cn](https://github.com/spiritLHLS/speedtest.cn-CN-ID) 数据，开发至 [oneclickvirt/speedtest](https://github.com/oneclickvirt/speedtest)
-- 三网 Ping 值测试：  
-  借鉴 [ecsspeed](https://github.com/spiritLHLS/ecsspeed)，二次开发至 [pingtest](https://github.com/oneclickvirt/pingtest)
-
----
-
 ## **使用说明**
 
 ### **Linux/FreeBSD/MacOS**
@@ -66,19 +37,19 @@
 - **国际用户无加速：**
 
   ```bash
-  export noninteractive=true && curl -L https://raw.githubusercontent.com/oneclickvirt/ecs/master/goecs.sh -o goecs.sh && chmod +x goecs.sh && bash goecs.sh env && bash goecs.sh install && goecs
+  export noninteractive=true && curl -L https://raw.githubusercontent.com/livecityccz/ecs-go/master/goecs.sh -o goecs.sh && chmod +x goecs.sh && bash goecs.sh env && bash goecs.sh install && goecs
   ```
 
 - **国际/国内使用 CDN 加速：**
 
   ```bash
-  export noninteractive=true && curl -L https://cdn.spiritlhl.net/https://raw.githubusercontent.com/oneclickvirt/ecs/master/goecs.sh -o goecs.sh && chmod +x goecs.sh && bash goecs.sh env && bash goecs.sh install && goecs
+  export noninteractive=true && curl -L https://cdn.spiritlhl.net/https://raw.githubusercontent.com/livecityccz/ecs-go/master/goecs.sh -o goecs.sh && chmod +x goecs.sh && bash goecs.sh env && bash goecs.sh install && goecs
   ```
 
 - **国内用户使用 CNB 加速：**
 
   ```bash
-  export noninteractive=true && curl -L https://cnb.cool/oneclickvirt/ecs/-/git/raw/main/goecs.sh -o goecs.sh && chmod +x goecs.sh && bash goecs.sh env && bash goecs.sh install && goecs
+  export noninteractive=true && curl -L https://cnb.cool/livecityccz/ecs-go/-/git/raw/main/goecs.sh -o goecs.sh && chmod +x goecs.sh && bash goecs.sh env && bash goecs.sh install && goecs
   ```
 
 #### **详细说明**
@@ -88,19 +59,19 @@
    **国际用户无加速：**
 
    ```bash
-   curl -L https://raw.githubusercontent.com/oneclickvirt/ecs/master/goecs.sh -o goecs.sh && chmod +x goecs.sh
+   curl -L https://raw.githubusercontent.com/livecityccz/ecs-go/master/goecs.sh -o goecs.sh && chmod +x goecs.sh
    ```
 
    **国际/国内使用 CDN 加速：**
 
    ```bash
-   curl -L https://cdn.spiritlhl.net/https://raw.githubusercontent.com/oneclickvirt/ecs/master/goecs.sh -o goecs.sh && chmod +x goecs.sh
+   curl -L https://cdn.spiritlhl.net/https://raw.githubusercontent.com/livecityccz/ecs-go/master/goecs.sh -o goecs.sh && chmod +x goecs.sh
    ```
 
    **国内用户使用 CNB 加速：**
 
    ```bash
-   curl -L https://cnb.cool/oneclickvirt/ecs/-/git/raw/main/goecs.sh -o goecs.sh && chmod +x goecs.sh
+   curl -L https://cnb.cool/livecityccz/ecs-go/-/git/raw/main/goecs.sh -o goecs.sh && chmod +x goecs.sh
    ```
 
 2. **更新包管理器（可选择）并安装环境**
@@ -209,7 +180,7 @@ Usage: goecs [options]
 
 ### **Windows**
 
-1. 下载带 exe 文件的压缩包：[Releases](https://github.com/oneclickvirt/ecs/releases)
+1. 下载带 exe 文件的压缩包：[Releases](https://github.com/livecityccz/ecs-go/releases)
 2. 解压后，右键以管理员模式运行。
 
 ---
@@ -234,49 +205,18 @@ docker run --rm spiritlhl/goecs:latest -menu=false -l zh
 
 使用Docker执行测试，硬件测试会有一些偏差和虚拟化架构判断失效，还是推荐直接测试而不使用Docker测试。
 
-国内镜像地址：https://cnb.cool/oneclickvirt/ecs/-/packages/docker/ecs
+国内镜像地址：https://cnb.cool/livecityccz/ecs-go/-/packages/docker/ecs
 
 请确保执行下述命令前本机已安装Docker
 
 特权模式+host网络
 
 ```shell
-docker run --rm --privileged --network host docker.cnb.cool/oneclickvirt/ecs:latest -menu=false -l zh
+docker run --rm --privileged --network host docker.cnb.cool/livecityccz/ecs-go:latest -menu=false -l zh
 ```
 
 非特权模式+非host网络
 
 ```shell
-docker run --rm docker.cnb.cool/oneclickvirt/ecs:latest -menu=false -l zh
-```
-
-我来帮你修复排版，以下是格式调整后的完整内容：
-
-### 从源码中进行编译
-
-<details>
-<summary>展开查看编译说明</summary>
-
-1. 克隆仓库的 public 分支（不含私有依赖）
-```bash
-git clone -b public https://github.com/oneclickvirt/ecs.git
-cd ecs
-```
-
-2. 安装 Go 环境（如已安装可跳过）
-```bash
-# 下载并安装 Go
-wget https://go.dev/dl/go1.23.4.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-```
-
-3. 编译
-```bash
-go build -o goecs
-```
-
-4. 运行测试
-```bash
-./goecs -menu=false -l zh
+docker run --rm docker.cnb.cool/livecityccz/ecs-go:latest -menu=false -l zh
 ```
